@@ -8,10 +8,10 @@ router.get('/games', (req, res) => {
 		.then(games => res.json(games));
 });
 
-router.post('/games', (req, res) => {
-	Game.create(req.body)
-		.then(game => res.json(game));
-});
+// router.post('/games', (req, res) => {
+// 	Game.create(req.body)
+// 		.then(game => res.json(game));
+// });
 
 
 export default router;

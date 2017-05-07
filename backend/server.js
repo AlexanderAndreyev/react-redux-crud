@@ -19,6 +19,14 @@ app.use((req, res, next) => {
 
 app.use('/api', apiRoutes);
 
+app.use((req, res) => {
+	res.status(404).json({
+		errors: {
+			global: "Still working on it"
+		}
+	})
+});
+
 app.listen(8080, () => {
 	console.log('Server has started on 8080');
 }); 
