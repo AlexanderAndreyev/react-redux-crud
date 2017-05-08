@@ -7,7 +7,7 @@ const GameSchema = Schema({
 		type: String,
 		required: true
 	},
-	description: {
+	cover: {
 		type: String,
 		required: true		
 	}

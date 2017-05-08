@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Link, Route } from 'react-router-dom';
-import logo from './logo.svg';
 import GamesPage from './GamesPage';
 import GameForm from './GameForm';
 
@@ -30,6 +29,7 @@ class App extends Component {
 	    	</nav>
         <Route exact={true} path="/games" component={GamesPage} />
         <Route path="/games/new" component={GameForm} />
+        <Route path="/game/:_id" component={GameForm} />
       </div>
     );
   }
