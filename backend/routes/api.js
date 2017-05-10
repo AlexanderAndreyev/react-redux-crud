@@ -32,4 +32,22 @@ router.post('/games', (req, res) => {
 	}
 });
 
+router.put('/games/:_id', (req, res) => {
+		const { errors, isValid } = validate(req.body);
+		if (isValid) {
+		Game.findByIdAndUpdate({ _id: req.params._id }, req.body)
+			.then(game => res.json(game))
+			.catch(err => res.status(500).json({ errors: { global: "Something went wrong" }}));
+	} else {
+		res.status(400).json({ errors });
+	}
+});
+
+router.delete('/games/:_id', (req, res) => {
+  Game.findByIdAndRemove({ _id: req.params._id })
+  .then(game => {
+    res.json(game);
+  });
+});
+
 export default router;

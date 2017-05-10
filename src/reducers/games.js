@@ -1,4 +1,4 @@
-import { SET_GAMES, ADD_GAME, GAME_FETCHED } from '../actions';
+import { SET_GAMES, ADD_GAME, GAME_FETCHED, GAME_UPDATED, GAME_DELETED } from '../actions';
 
 export default function(state = [], action = {}) {
 	switch(action.type) {
@@ -6,6 +6,13 @@ export default function(state = [], action = {}) {
 			return [...state, action.game]
 		case SET_GAMES:
 			return action.games;
+		case GAME_UPDATED:
+			return state.map(game => {
+				if (game._id === action.game._id) return action.game;
+				return game;
+			});
+		case GAME_DELETED:
+			return state.filter(game => game._id != action.gameId);
 		case GAME_FETCHED:
 			const index = state.findIndex(item => item._id === action.game._id);
 			if (index > -1) {

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import GameCard from './GameCard';
 
-function GamesList({ games }) {
+function GamesList({ games, deleteGame }) {
 	const emptyMessage = (
 		<p>There are no games here now</p>
 	);
@@ -10,7 +10,7 @@ function GamesList({ games }) {
 	const gamesList = (
 		<div className="container">
 			<div className="row">
-				{ games.map((game) => <GameCard game={game} key={game._id} />) }
+				{ games.map((game) => <GameCard game={game} key={game._id} deleteGame={deleteGame}/>) }
 			</div>
 		</div>
 	);
@@ -23,7 +23,8 @@ function GamesList({ games }) {
 }
 
 GamesList.propTypes = {
-	games: PropTypes.array.isRequired
+	games: PropTypes.array.isRequired,
+	deleteGame: PropTypes.func.isRequired
 }
 
 export default GamesList;
